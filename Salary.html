@@ -1,0 +1,268 @@
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700" rel="stylesheet">
+  <title>My salary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <style>
+    body{
+  border-box: border-box;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  text-align: center;
+  background-image: url(images/income.jpg);background-size: cover;
+  color:black;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1{
+  font-size: 3em;
+  color:chartreuse;
+}
+
+h2{
+  font-size: 2em;
+}
+
+
+form{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  width: 5em;
+  margin: 0.5em;
+  border-radius: 0.2em;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  color: #004d4d;
+  text-align: center;
+  background-color: wheat;
+  font-size: 1.3em;
+  border-style: none; 
+  padding-top: 0.2em;
+}
+
+input:hover{
+  background-color: palevioletred
+}
+
+.box {
+  background-color : #008080;
+  width: 13em;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  margin: 0.5em;
+  
+}
+
+.net_gross {
+  display: flex;
+  align-items: center;
+  padding-left: 1em;
+}
+
+.reset {
+  width: 6em;
+  background-color : #008080;
+  border-radius: 0.4em;
+  padding-top: 10px;
+  padding-bottom: 6px;
+  border-style: none;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 1.3em;
+  color: #FFFFFF;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-transition-duration: 0.4s; /* Safari*/
+  transition-duration: 0.1s;
+  border: solid 2px black
+}
+
+.reset:hover {
+  border: solid 2px plum;
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width : 745px){
+  body{
+    height: auto;
+  }
+  form{
+  width: 100%;
+  display: flex;
+  flex-direction : column;
+  justify-content: center;
+  align-items: center;
+  }
+  
+}
+  </style>
+  
+</head>
+<body>
+  <div class="left">
+    <a href="home.html">Go home</a></div>
+  <div class="container">
+  <h1> Salary Converter</h1>
+  
+  
+<form>
+   
+  <div class="box">
+    <h2>Annual salary</h2>
+    <div class="net_gross">  
+    <input id="annual_net" type="text" placeholder="0" onkeyup="myAnnualNet()">€ NET
+    </div>
+    
+    <div class="net_gross"> 
+    <input id="annual_gross" type="text" placeholder="0" onkeyup="myAnnualGross()">€ GROSS
+    </div>
+  </div>
+  
+      
+   <div class="box">
+    
+     <h2>Monthly salary</h2>
+   
+      <div class="net_gross">
+          <input id="month_net" type="text" placeholder="0" onkeyup="myMonthNet()">€ NET
+     </div>
+ 
+      <div class="net_gross">   
+          <input id="month_gross" type="text" placeholder="0" onkeyup="myMonthGross()">€ GROSS
+      </div>
+        
+   </div>  
+     
+   <div class="box">
+    
+     <h2>Hourly salary</h2>
+   
+      <div class="net_gross">
+          <input id="hourly_net" type="text" placeholder="0" onkeyup="myHourlyNet()">€ NET
+      </div>
+   
+      <div class="net_gross">
+          <input id="hourly_gross" type="text" placeholder="0" onkeyup="myHourlyGross()">€ GROSS
+      </div>
+ 
+  </div>
+  
+</form>
+  
+  <div class="reset" onclick="reset()">RESET ALL ENTRIES</div>
+    
+  </div>
+  
+  <script>
+    var ratio = 22.2;
+var monthForYear = 12;
+var hoursForWeek = 35 ;
+var weekForYear = 52;
+var hoursAmonth = 151.67;
+
+function myMonthNet() {
+  var monthNet = Number(document.getElementById("month_net").value);
+  var monthGross = monthNet + monthNet * ratio / 100;
+  var annualNet = monthNet * monthForYear;
+  var annualGross = monthGross * monthForYear;
+  var hourlyNet = monthNet / hoursAmonth;
+  var hourlyGross = monthGross / hoursAmonth;
+  document.getElementById("month_gross").value = monthGross.toFixed(2);
+  document.getElementById("annual_net").value = annualNet.toFixed(2);
+  document.getElementById("annual_gross").value = annualGross.toFixed(2);
+  document.getElementById("hourly_net").value = hourlyNet.toFixed(2);
+  document.getElementById("hourly_gross").value = hourlyGross.toFixed(2);
+}
+
+function myMonthGross() {
+  var monthGross = Number(document.getElementById("month_gross").value);
+  var monthNet = monthGross - monthGross * ratio / 100;
+  var annualNet = monthNet * monthForYear;
+  var annualGross = monthGross * monthForYear;
+  var hourlyNet = monthNet / hoursAmonth;
+  var hourlyGross = monthGross / hoursAmonth;
+  document.getElementById("month_net").value = monthNet.toFixed(2);
+  document.getElementById("annual_net").value = annualNet.toFixed(2);
+  document.getElementById("annual_gross").value = annualGross.toFixed(2);
+  document.getElementById("hourly_net").value = hourlyNet.toFixed(2);
+  document.getElementById("hourly_gross").value = hourlyGross.toFixed(2);
+}
+
+function myAnnualNet() {
+  var annualNet = Number(document.getElementById("annual_net").value);
+  var annualGross = annualNet + annualNet * ratio / 100;
+  var monthNet = annualNet / monthForYear;
+  var monthGross = annualGross / monthForYear;
+  var hourlyNet = monthNet / hoursAmonth;
+  var hourlyGross = monthGross / hoursAmonth;
+  document.getElementById("annual_gross").value = annualGross.toFixed(2);
+  document.getElementById("month_net").value = monthNet.toFixed(2);
+  document.getElementById("month_gross").value = monthGross.toFixed(2);
+  document.getElementById("hourly_net").value = hourlyNet.toFixed(2);
+  document.getElementById("hourly_gross").value = hourlyGross.toFixed(2);
+}
+
+function myAnnualGross() {
+  var annualGross = Number(document.getElementById("annual_gross").value);
+  var annualNet = annualGross - annualGross * ratio / 100;
+  var monthNet = annualNet / monthForYear;
+  var monthGross = annualGross / monthForYear;
+  var hourlyNet = monthNet / hoursAmonth;
+  var hourlyGross = monthGross / hoursAmonth;
+  document.getElementById("annual_net").value = annualNet.toFixed(2);
+  document.getElementById("month_net").value = monthNet.toFixed(2);
+  document.getElementById("month_gross").value = monthGross.toFixed(2);
+  document.getElementById("hourly_net").value = hourlyNet.toFixed(2);
+  document.getElementById("hourly_gross").value = hourlyGross.toFixed(2);
+}
+
+function myHourlyNet(){
+  var hourlyNet = Number(document.getElementById("hourly_net").value);
+  var hourlyGross = hourlyNet + hourlyNet * ratio / 100;
+  var monthNet = hourlyNet * hoursAmonth ;
+  var monthGross = hourlyGross * hoursAmonth ;
+  var annualNet = monthNet * monthForYear;
+  var annualGross = monthGross * monthForYear;
+  document.getElementById("annual_net").value = annualNet.toFixed(2);
+  document.getElementById("annual_gross").value = annualGross.toFixed(2);
+  document.getElementById("month_net").value = monthNet.toFixed(2);
+  document.getElementById("month_gross").value = monthGross.toFixed(2);
+  document.getElementById("hourly_gross").value = hourlyGross.toFixed(2);  
+}
+
+function myHourlyGross(){
+  var hourlyGross = Number(document.getElementById("hourly_gross").value);
+  var hourlyNet = hourlyGross - hourlyGross * ratio / 100;
+  var monthNet = hourlyNet * hoursAmonth ;
+  var monthGross = hourlyGross * hoursAmonth ;
+  var annualNet = monthNet * monthForYear;
+  var annualGross = monthGross * monthForYear;
+  document.getElementById("annual_net").value = annualNet.toFixed(2);
+  document.getElementById("annual_gross").value = annualGross.toFixed(2);
+  document.getElementById("month_net").value = monthNet.toFixed(2);
+  document.getElementById("month_gross").value = monthGross.toFixed(2);
+  document.getElementById("hourly_net").value = hourlyNet.toFixed(2);  
+}
+
+function reset(){
+  document.getElementById("annual_net").value = 0;
+  document.getElementById("annual_gross").value = 0;
+  document.getElementById("month_net").value = 0;
+  document.getElementById("month_gross").value = 0;
+  document.getElementById("hourly_net").value = 0;
+  document.getElementById("hourly_gross").value = 0;
+}
+  </script>
+
+</body>
