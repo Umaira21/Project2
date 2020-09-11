@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700" rel="stylesheet">
+ 
 
         <style>
             table{
@@ -10,28 +12,38 @@
   border-color: black;
   border-width: 5px;
   border-radius: 5px;
-  background-color: silver;display: inline-table; position: relative;padding: 50px;
+  background-color:#008080;display: inline-table; position: relative;padding: 50px;
 }
 #subBtn{
   border-style: solid;
   border-color: black;
-  border-width: 2px;
+  border-width: 4px;
   border-radius: 5px;
+}
+#subBtn:hover{
+  background-color: palevioletred
 }
 #taxBtn{
   border-style: solid;
   border-color: black;
-  border-width: 2px;
-  border-radius: 5px;
+  border-width: 4px;
+  border-radius: 7px;
 }
+#taxBtn:hover{
+  background-color: palevioletred
+}
+
 #gtotalBtn{
   border-style: solid;
   border-color: black;
-  border-width: 2px;
-  border-radius: 5px;
+  border-width: 4px;
+  border-radius: 7px;
 }
-body{background-color:grey;}
-
+#gtotalBtn:hover{
+  background-color: palevioletred
+}
+body{ background-image: url(images/income.jpg);background-size: cover;}
+ 
 
 
 
@@ -39,22 +51,22 @@ body{background-color:grey;}
         </style>
     </head>
     <body>
+      <div class="left">
+        <a href="home.html">Go home</a></div>
+      
 
-        <div class="link" >
-          <a href="home.html">
-              <img src="images/Canadian_Taxes.jpg" height="150" width="200"></a>
-          </div> 
-
+        
       
         <div align="center">
-          <p><h2>Goods and Services Tax</h2>
+          <p><h2 style="color:  chartreuse;padding-top: 80px; font-weight: 900;">Goods and Services Tax</h2>
             Goods and Services Tax meaning: GST, or Goods and Services Tax,<br><br>Is a tax that customers have to bear when they buy any goods or services<br><br> such as food, clothes, items of daily needs, transportation etc.
           </p>
         </div>
         
+        
         <center>
             <div class ="form">
-                    <h2> Sales Tax Calculator</h5>
+                    <h2 style="color: chartreuse;font-weight:900;font-family: 'Yanone Kaffeesatz', sans-serif;"> Sales Tax Converter</h5>
                     <form name="orderform" id="orderform">
                     <table>
             </div>
@@ -127,7 +139,11 @@ body{background-color:grey;}
             </table>
             </form>      
             </div>
+            
+          
             </center>
+
+            
             <script>
                 function subTotal() {
   var price = document.orderform.price.value;
