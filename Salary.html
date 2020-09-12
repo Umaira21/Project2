@@ -1,17 +1,19 @@
 <head>
   <meta charset="utf-8">
   <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <title>My salary</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <style>
     body{
-  border-box: border-box;
+
   font-family: 'Yanone Kaffeesatz', sans-serif;
   text-align: center;
   background-image: url(images/income.jpg);background-size: cover;
   color:black;
-  height: 100vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -106,6 +108,28 @@ input:hover{
   }
   
 }
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:black;
+   color: white;
+   text-align: center;}
+   .footer{position: fixed;
+left: 0;
+bottom: 0;
+
+width: 100%;
+background-color:black;
+color: wheat;
+text-align: left;padding-left: 10px;}
+.footer-right {
+  float: right;padding-right: 10px;;
+  }
+  .footer-left{float: left;color:blue;padding-left: 8px}
+ 
+
   </style>
   
 </head>
@@ -163,6 +187,36 @@ input:hover{
   <div class="reset" onclick="reset()">RESET ALL ENTRIES</div>
     
   </div>
+  <footer>
+    <div class="footer">
+      <i class="fa fa-envelope"></i>
+     <p> <a href="mailto:hege@example.com"><b>hege@example.com</b></a></p>
+      <div class="footer-right">
+    
+        <a href="#"><b><i class="fa fa-facebook"></b></i></a>
+        
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-github"></i></a>
+    
+      </div>
+      <div class="footer-left">
+        <i class="fa fa-phone"></i>
+        <p>+1 403-644-0000</p>
+        
+      </div>
+    
+    
+    
+    </div>
+    </footer>
+    
+    
+    
+
+
+
+
   
   <script>
     var ratio = 22.2;
